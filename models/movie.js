@@ -10,11 +10,6 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         Movie.belongsToMany(models.Movier, {through: models.MovierMovie, foreignKey: 'movie_id'});
       }
-    },
-    hooks: {
-      beforeCreate: function(movie, options) {
-        movie.rating = 1;
-      }
     }
   });
   return Movie;

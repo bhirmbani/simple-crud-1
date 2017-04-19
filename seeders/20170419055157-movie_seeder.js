@@ -46,7 +46,14 @@ module.exports = {
       rating: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    },
+    {
+      title: 'The Hangover',
+      description: 'lucunya bikin ngakak..',
+      rating: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
     ], {});
   },
 

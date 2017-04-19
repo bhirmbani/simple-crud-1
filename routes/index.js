@@ -17,7 +17,8 @@ router.get('/add-movie', function(req, res, next) {
 router.post('/add-movie', function(req, res, next) {
   let title = req.body.title;
   let description = req.body.description;
-  db.Movie.create({'title': title, 'description': description})
+  let rating = req.body.rating;
+  db.Movie.create({'title': title, 'description': description, 'rating': rating})
   .then(() => {
     res.redirect('/');
   })
