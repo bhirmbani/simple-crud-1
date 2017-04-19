@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+
+<div class="ui two column centered grid">
+
+  <form class="ui form login" action="/login" method="POST">
+    <h1><%= title %></h1>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Username">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <button class="ui button" type="submit">Submit</button>
+    <div class="ui error message"></div>
+    <div><a href="/signup">Atau buat akun dulu</a></div>
+  </form>
+</div>
+
+
+<% include ./partials/footer %>

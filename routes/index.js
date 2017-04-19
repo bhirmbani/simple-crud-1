@@ -97,4 +97,17 @@ router.post('/signup', (req, res, next) => {
   })
 });
 
+// login
+router.get('/login', function(req, res, next) {
+  res.render('login', {title: 'Login Form'});
+});
+
+router.post('/login', function(req, res, next) {
+  let username = req.body.username;
+  let password = req.body.password;
+  
+  
+
+});
+
 module.exports = router;
