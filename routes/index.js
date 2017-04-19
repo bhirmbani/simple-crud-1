@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+let helper = require('../helper/format_date');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -43,6 +44,25 @@ router.post('/edit/:id', function(req, res, next) {
   })
   .catch(err => {
     console.log(err);
+  })
+});
+
+router.get('/delete/:id', (req, res, next) => {
+  let movieId = req.params.id;
+  db.Movie.findById(movieId)
+  .then(movie => {
+    res.render('delete', {title: `Delete ${movie.title} Movie`, movie: movie, helper: helper});
+  })
+});
+
+router.get('/delete/confirm/:id', (req, res, next) => {
+  let movieId = req.params.id;
+  db.Movie.destroy({where: {id: movieId}})
+  .then(() => {
+    res.redirect('/');
+  })
+  .catch((err) => {
+    res.send(err.message);
   })
 });
 
