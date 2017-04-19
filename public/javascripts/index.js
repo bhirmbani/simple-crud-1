@@ -102,7 +102,7 @@ $('.ui.star.rating')
             prompt : 'Please enter a password'
           },
           {
-            type   : 'minLength[6]',
+            type   : 'minLength[5]',
             prompt : 'Your password must be at least {ruleValue} characters'
           }
         ]

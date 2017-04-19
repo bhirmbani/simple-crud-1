@@ -106,7 +106,22 @@ router.post('/login', function(req, res, next) {
   let username = req.body.username;
   let password = req.body.password;
   
-  
+  //cek password
+  db.Movier.findOne({ where: { username: username }})
+      .then(movier => {
+        if (movier) {
+          if (password === movier.password) {
+            req.session.username = username
+            req.session.userid = movier.userid
+            res.redirect('/')
+          } else {
+            res.send('Password is not match')
+          }
+        } else {
+          res.send('Client not found')
+        }
+      })
+      .catch(err => res.send(err.message))
 
 });
 
