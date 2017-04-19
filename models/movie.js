@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     hooks: {
       beforeCreate: function(movie, options) {
-        movie.rating = 0;
+        movie.rating = 1;
       }
     }
   });
