@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<% include ./partials/header %>
+
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
-</html>
+
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% movies.forEach(movie => { %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.description %></td>
+          <td><%= movie.rating %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+</table>
+
+<% include ./partials/footer %>
