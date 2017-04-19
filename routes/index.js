@@ -4,7 +4,11 @@ var db = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  db.Movie.findAll({order: '"id" ASC'})
+  .then(movies => {
+    res.render('index', { title: 'Movie for Moviers', movies: movies });
+  })
+  
 });
 
 module.exports = router;
