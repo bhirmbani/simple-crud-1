@@ -77,4 +77,8 @@ router.get('/movies/:id', (req, res, next) => {
   })
 });
 
+router.get('/signup', (req, res, next) => {
+  res.render('signup', {title: 'Sign Up'});
+});
+
 module.exports = router;

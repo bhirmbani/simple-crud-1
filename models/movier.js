@@ -3,7 +3,9 @@ module.exports = function(sequelize, DataTypes) {
   var Movier = sequelize.define('Movier', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    username: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
