@@ -5,7 +5,7 @@
 
 <div class="ui two column centered grid">
 
-  <form class="ui form">
+  <form class="ui form signup" action="/signup" method="POST">
     <h1><%= title %></h1>
     <div class="field">
       <label>First Name</label>
@@ -25,15 +25,16 @@
     </div>
     <div class="field">
       <label>Password</label>
-      <input type="text" name="password" placeholder="Password">
+      <input type="password" name="password" placeholder="Password">
     </div>
     <div class="field">
       <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="">
+        <input type="checkbox" tabindex="0" class="" name="benar">
         <label>Apakah data kamu sudah benar?</label>
       </div>
     </div>
     <button class="ui button" type="submit">Submit</button>
+    <div class="ui error message"></div>
   </form>
 </div>
   

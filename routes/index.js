@@ -81,4 +81,20 @@ router.get('/signup', (req, res, next) => {
   res.render('signup', {title: 'Sign Up'});
 });
 
+router.post('/signup', (req, res, next) => {
+  let firstname = req.body.firstname;
+  let lastname = req.body.lastname;
+  let email = req.body.email;
+  let username = req.body.username;
+  let password = req.body.password;
+
+  db.Movier.create({'first_name': firstname, 'last_name': lastname, 'email': email, 'username': username, 'password': password})
+  .then(() => {
+    res.redirect('/moviers');
+  })
+  .catch(err => {
+    console.log(err.message);
+  })
+});
+
 module.exports = router;
