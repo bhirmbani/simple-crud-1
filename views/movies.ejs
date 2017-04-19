@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+
+<div class="centers">
+  <h1><%= title %></h1>
+</div>
+
+<div class="centers">
+  <div class="ui card">
+    <div class="content">
+      <a class="header"><%= movie.title %></a>
+      <div class="meta">
+        <span class="date">Added in <%= helper.formatDate(movie.createdAt) %></span>
+      </div>
+      <div class="description">
+        <%= movie.description %>
+      </div>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="user icon"></i>
+        22 Friends
+      </a>
+      <a href="/">Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<% include ./partials/footer %>

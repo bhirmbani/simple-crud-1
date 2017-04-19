@@ -66,4 +66,15 @@ router.get('/delete/confirm/:id', (req, res, next) => {
   })
 });
 
+router.get('/movies/:id', (req, res, next) => {
+  let movieId = req.params.id;
+  db.Movie.findById(movieId)
+  .then(movie => {
+    res.render('movies', {title: movie.title, movie: movie, helper: helper})
+  })
+  .catch((err) => {
+    res.render(err.message);
+  })
+});
+
 module.exports = router;
