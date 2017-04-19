@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// tambahan
+var session = require('express-session');
+var crypto = require('crypto');
+
 var index = require('./routes/index');
 var moviers = require('./routes/moviers');
 
@@ -21,6 +25,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// untuk login logout
+app.use(session({
+  secret: 'moviemovier',
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(function(req, res, next) {
+  app.locals.username = req.session.username || ''
+  app.locals.helper = require('./helper/helper')
+  next()
+})
 
 app.use('/', index);
 app.use('/moviers', moviers);

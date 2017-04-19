@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
-let helper = require('../helper/format_date');
+let helper = require('../helper/helper');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
