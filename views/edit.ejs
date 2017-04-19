@@ -13,13 +13,32 @@
     <div class="field">
       <label for="description">Movie Description</label>
       <textarea name="description" rows="2" placeholder="what do you like about this movie?"><%= movie.description %></textarea>
-      <button class="ui primary button">Submit</button>
     </div>
+
+    <div class="field">
+    <label for="rating">Select rating</label>
+      <select name="rating" class="ui dropdown">
+        <option value="0">Saya ga mau sama sekali nonton ini..</option>
+        <option value="1">Filmnya jelek, ngabisin waktu aja</option>
+        <option value="2">Biasa aja, ga ada yang spesial</option>
+        <option value="4">Bagus nih film! Menghibur dan ga nyesel nontonnya</option>
+        <option value="5">Ini dia film yang cuman ada satu dekade sekali! Classic abis</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div><button class="ui primary button">Submit</button></div>
+    </div>
+
+    
   </form>
 </div>
 
-<div class="ui center aligned container">
-  <a href="/">Back to movie list</a>
-</div>
+
+  <div class="ui center aligned container">
+    <a href="/">Back to movie list</a>
+  </div>
+
+
 
 <% include ./partials/footer %>

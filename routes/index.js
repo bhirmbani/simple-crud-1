@@ -36,7 +36,7 @@ router.get('/edit/:id', function(req, res, next) {
 
 router.post('/edit/:id', function(req, res, next) {
   let movieId = req.params.id;
-  db.Movie.update({title: req.body.title, description: req.body.description}, {where: {id: movieId}})
+  db.Movie.update({title: req.body.title, description: req.body.description, rating:req.body.rating}, {where: {id: movieId}})
   .then(() => {
     res.redirect('/');
   })
