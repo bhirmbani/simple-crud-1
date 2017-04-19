@@ -1,4 +1,10 @@
 <% include ./partials/header %>
+    
+    <div class="ui menu">
+      <div class="header item">Movie for Moviers</div>
+      <a href="/add-movie" class="item">Add movie</a>
+      <a href="/moviers" class="item">Moviers</a>
+    </div>
 
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
@@ -28,7 +34,5 @@
         <% }) %>
       </tbody>
     </table>
-
-    <a href="/add-movie">Add new movie</a>
 
 <% include ./partials/footer %>
