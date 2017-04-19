@@ -8,7 +8,22 @@ router.get('/', function(req, res, next) {
   .then(movies => {
     res.render('index', { title: 'Movie for Moviers', movies: movies });
   })
-  
+});
+
+router.get('/add-movie', function(req, res, next) {
+  res.render('add-movie', {title: 'Add new movie'});
+});
+
+router.post('/add-movie', function(req, res, next) {
+  let title = req.body.title;
+  let description = req.body.description;
+  db.Movie.create({'title': title, 'description': description})
+  .then(() => {
+    res.redirect('/');
+  })
+  .catch(err => {
+    console.log(err.message);
+  })
 });
 
 module.exports = router;

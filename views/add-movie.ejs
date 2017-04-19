@@ -1,0 +1,26 @@
+<% include ./partials/header %>
+
+
+
+<div class="ui center aligned container text add-movie">
+  <h1><%= title %></h1>
+  <form class="ui form" action="/add-movie" method="POST">
+    <div class="field">
+      <label for="title">Movie Title</label>
+      <input type="text" name="title" placeholder="movie title">
+    </div>
+    <div class="field">
+      <label for="description">Movie Description</label>
+      <textarea name="description" rows="2" placeholder="what do you like about this movie?"></textarea>
+      <button class="ui primary button">Submit</button>
+    </div>
+</form>
+</div>
+<div class="ui center aligned container">
+  <a href="/">Back to movie list</a>
+</div>
+
+
+
+
+<% include ./partials/footer %>
