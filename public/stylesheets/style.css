@@ -13,3 +13,10 @@ a {
   justify-content: center;
 }
 
+.edit {
+  color: #444;
+}
+
+.erase {
+  color: #444;
+}

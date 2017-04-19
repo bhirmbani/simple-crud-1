@@ -26,4 +26,23 @@ router.post('/add-movie', function(req, res, next) {
   })
 });
 
+router.get('/edit/:id', function(req, res, next) {
+  let movieId = req.params.id;
+  db.Movie.findById(movieId)
+  .then(movie => {
+    res.render('edit', {title: `Edit ${movie.title} Movie`, movie: movie});
+  })
+});
+
+router.post('/edit/:id', function(req, res, next) {
+  let movieId = req.params.id;
+  db.Movie.update({title: req.body.title, description: req.body.description}, {where: {id: movieId}})
+  .then(() => {
+    res.redirect('/');
+  })
+  .catch(err => {
+    console.log(err);
+  })
+});
+
 module.exports = router;

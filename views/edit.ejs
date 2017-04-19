@@ -2,16 +2,17 @@
 
 
 
+
 <div class="ui center aligned container text add-movie">
-  <h1><%= title %></h1>
-  <form class="ui form" action="/add-movie" method="POST">
+  <h1> <%= title %></h1>
+  <form class="ui form" action="/edit/<%= movie.id %>" method="POST">
     <div class="field">
       <label for="title">Movie Title</label>
-      <input type="text" name="title" placeholder="movie title">
+      <input value="<%= movie.title %>" type="text" name="title" placeholder="movie title">
     </div>
     <div class="field">
       <label for="description">Movie Description</label>
-      <textarea name="description" rows="2" placeholder="what do you like about this movie?"></textarea>
+      <textarea name="description" rows="2" placeholder="what do you like about this movie?"><%= movie.description %></textarea>
       <button class="ui primary button">Submit</button>
     </div>
   </form>
@@ -20,8 +21,5 @@
 <div class="ui center aligned container">
   <a href="/">Back to movie list</a>
 </div>
-
-
-
 
 <% include ./partials/footer %>

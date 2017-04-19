@@ -16,6 +16,7 @@
           <th>Description</th>
           <th>Rating</th>
           <th>User</th>
+          <th>Setting</th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +28,10 @@
 
           <td>
             <span class="user-info">posted by <a href="/">tes</a></span>
+          </td>
+          <td>
+            <a href="/edit/<%= movie.id %>"><i class="edit icon"></i></a>
+            <a href="/delete/<%= movie.id %>"><i class="erase icon"></i></a>
           </td>
 
         </tr>
