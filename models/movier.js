@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Movier.hasMany(models.Movie,{foreignKey: 'movier_id'});
+        Movier.hasMany(models.Comment,{foreignKey: 'movier_id'});
       }
     }
   });

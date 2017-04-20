@@ -82,7 +82,13 @@ router.get('/movies/:id', (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
-    res.render('movies', {title: movie.title, movie: movie, helper: helper})
+    let movierId = movie.movier_id
+    db.Comment.findAll({include:[{model: db.Movier}], order: '"createdAt" ASC'})
+    .then(comments => {
+      // res.send(comments);
+      res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments});
+    })
+    
   })
   .catch((err) => {
     res.render(err.message);
