@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        // Comment.belongsTo(models.Movier,{foreignKey: 'movier_id'});
+        Comment.belongsTo(models.Movier,{foreignKey: 'movier_id'});
         // Comment.belongsTo(models.Movie,{foreignKey: 'movie_id'});
         Comment.belongsToMany(models.Movie, {
           through: 'CommentMovies',
