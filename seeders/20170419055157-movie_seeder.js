@@ -16,6 +16,7 @@ module.exports = {
       title: 'Doraemon',
       description: 'Film tentang petualangan Doraemon di negeri Jepang.',
       rating: 1,
+      movier_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -23,6 +24,7 @@ module.exports = {
       title: 'Lord of The Ring: Fellowship of The Ring',
       description: 'Film tentang petualangan hobbit di Middle Earth.',
       rating: 1,
+      movier_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -30,6 +32,7 @@ module.exports = {
       title: 'Ada Apa dengan Cinta 2',
       description: 'Asik dan menarik...',
       rating: 1,
+      movier_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -37,6 +40,7 @@ module.exports = {
       title: 'Filosofi Kopi',
       description: 'saya suka minum kopi setelah nonton ini',
       rating: 1,
+      movier_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -44,6 +48,7 @@ module.exports = {
       title: 'The Conjuring 2',
       description: 'Aduh seremnya..',
       rating: 1,
+      movier_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -51,6 +56,7 @@ module.exports = {
       title: 'The Hangover',
       description: 'lucunya bikin ngakak..',
       rating: 1,
+      movier_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
