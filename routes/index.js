@@ -3,8 +3,18 @@ var router = express.Router();
 var db = require('../models');
 let helper = require('../helper/helper');
 
+
+// Authentication and Authorization Middleware
+function checkAuth(req, res, next) {
+  if (!req.session.username) {
+    res.send('You are not authorized to view this page');
+  } else {
+    next();
+  }
+}
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', checkAuth, function(req, res, next) {
   db.Movie.findAll({order: '"id" ASC'})
   .then(movies => {
     res.render('index', { title: 'Movie for Moviers', movies: movies });
@@ -90,7 +100,7 @@ router.post('/signup', (req, res, next) => {
 
   db.Movier.create({'first_name': firstname, 'last_name': lastname, 'email': email, 'username': username, 'password': password})
   .then(() => {
-    res.redirect('/moviers');
+    res.redirect('/');
   })
   .catch(err => {
     console.log(err.message);
@@ -113,6 +123,7 @@ router.post('/login', function(req, res, next) {
           if (password === movier.password) {
             req.session.username = username
             req.session.userid = movier.userid
+            console.log(req.session.username)
             res.redirect('/')
           } else {
             res.send('Password is not match')
@@ -122,7 +133,16 @@ router.post('/login', function(req, res, next) {
         }
       })
       .catch(err => res.send(err.message))
+});
 
+router.get('/logout', function(req, res) {
+  req.session.destroy(err => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/login');
+    }
+  });
 });
 
 module.exports = router;
