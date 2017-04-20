@@ -11,7 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Movie.belongsTo(models.Movier,{foreignKey: 'movier_id'});
-        Movie.hasMany(models.Comment,{foreignKey: 'movie_id'});
+        // Movie.hasMany(models.Comment,{foreignKey: 'movie_id'});
+        Movie.belongsToMany(models.Comment, {
+          through: 'CommentMovies',
+          foreignKey: 'movie_id'
+        });
       }
     }
   });
