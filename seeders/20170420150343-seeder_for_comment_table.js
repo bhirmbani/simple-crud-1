@@ -24,7 +24,6 @@ module.exports = {
       movier_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    },
     }
     ], {});
   },

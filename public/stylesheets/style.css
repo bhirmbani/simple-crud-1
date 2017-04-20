@@ -42,3 +42,13 @@ a {
   max-height:200px;
   display: block;
 }
+
+.comment-btn {
+  display: grid;
+  margin: 0 auto;
+}
+
+.movie-pic {
+  max-width: 350px;
+  max-height:350px;
+}
