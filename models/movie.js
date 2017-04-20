@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Movie.belongsToMany(models.Movier, {through: models.MovierMovie, foreignKey: 'movie_id'});
+        Movie.belongsTo(models.Movier,{foreignKey: 'movier_id'});
       }
     }
   });

@@ -5,12 +5,12 @@ module.exports = function(sequelize, DataTypes) {
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
     username: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Movier.belongsToMany(models.Movie, {through: models.MovierMovie, foreignKey: 'movier_id'});
+        Movier.hasMany(models.Movie,{foreignKey: 'movier_id'});
       }
     }
   });
