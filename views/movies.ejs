@@ -29,12 +29,11 @@
       </a> -->
       <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
+  <% comments.forEach(comment => { %>
+  <% if(comment.movier_id === movie.movier_id) { %>
   <div class="comment">
     <a class="avatar">
-      <% comments.forEach(comment => { %>
-      <% if(comment.movier_id === 1) { %>
-      <!-- < if(comment.movier_id === moviers.id) > -->
-      <img class="comment-pic" src="<%= moviers[0].image_url %>" draggable="true" data-bukket-ext-bukket-draggable="true">
+      <img src="<%= moviers[comment.movier_id - 1].image_url %>" draggable="true" data-bukket-ext-bukket-draggable="true">
       
     </a>
     <div class="content">
@@ -54,7 +53,7 @@
   <% }) %>
   <form action="/add-comment/<%= movie.id %>" method="POST" class="ui reply form">
     <div class="field">
-      <textarea name="content"></textarea>
+      <input type="text" name="content">
     </div>
       <div class="comment-btn">
         <button class="ui primary button" type="submit">Add comment</button>

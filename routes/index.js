@@ -116,6 +116,7 @@ router.post('/add-comment/:id', (req, res, next) => {
     'movie_id': movieId,
   })
   .then(() => {
+    // create movier_id untuk commentmovie di sini
     res.redirect('/')
   })
 });
