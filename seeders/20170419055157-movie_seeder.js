@@ -17,6 +17,7 @@ module.exports = {
       description: 'Film tentang petualangan Doraemon di negeri Jepang.',
       rating: 1,
       movier_id: 1,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/doraemon.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -25,6 +26,7 @@ module.exports = {
       description: 'Film tentang petualangan hobbit di Middle Earth.',
       rating: 1,
       movier_id: 2,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/LOTR.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -33,6 +35,7 @@ module.exports = {
       description: 'Asik dan menarik...',
       rating: 1,
       movier_id: 1,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/AADC.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -41,6 +44,7 @@ module.exports = {
       description: 'saya suka minum kopi setelah nonton ini',
       rating: 1,
       movier_id: 2,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/FilosofiKopi.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -49,6 +53,7 @@ module.exports = {
       description: 'Aduh seremnya..',
       rating: 1,
       movier_id: 2,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/TheConjuring2.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -57,6 +62,7 @@ module.exports = {
       description: 'lucunya bikin ngakak..',
       rating: 1,
       movier_id: 1,
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/Hangover.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },

@@ -3,7 +3,9 @@ module.exports = function(sequelize, DataTypes) {
   var Movie = sequelize.define('Movie', {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    rating: DataTypes.INTEGER
+    rating: DataTypes.INTEGER,
+    movier_id: DataTypes.INTEGER,
+    image_url: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

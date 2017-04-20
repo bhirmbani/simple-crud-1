@@ -1,5 +1,8 @@
 <% include ./partials/header %>
     
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
     <div class="ui menu">
       <div class="header item">Movie for Moviers</div>
       <a href="/add-movie" class="item">Add movie</a>
@@ -9,8 +12,7 @@
       <a href="#" class="item ui active red">Welcome <%= username %></a>
     </div>
 
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    
 
     <table class="ui striped table">
       <thead>
@@ -25,7 +27,7 @@
       <tbody>
         <% movies.forEach(movie => { %>
         <tr>
-          <td><a href="/movies/<%= movie.id %>"><%= movie.title %></a> </td>
+          <td><a href="/movies/<%= movie.id %>"><%= movie.title %></a> <img class="front-pic" src="<%= movie.image_url %>" alt=""></td>
           <td><%= movie.description %></td>
           <td><div class="ui star rating" data-rating="<%= movie.rating %>"></div></td>
 

@@ -30,3 +30,9 @@ a {
 .center {
   margin: 0 auto;
 }
+
+.front-pic {
+  max-width: 200px;
+  max-height: 200px;
+  display: table;
+}
