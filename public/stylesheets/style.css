@@ -52,3 +52,8 @@ a {
   max-width: 350px;
   max-height:350px;
 }
+
+.comment-pic {
+  max-width: 25px;
+  max-height: 25px;
+}

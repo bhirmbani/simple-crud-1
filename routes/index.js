@@ -82,11 +82,21 @@ router.get('/movies/:id', (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
-    let movierId = movie.movier_id
-    db.Comment.findAll({include:[{model: db.Movier}, {model:db.Movie}], order: '"createdAt" ASC'})
+    db.Comment.findAll()
     .then(comments => {
-      // res.send(comments);
-      res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments});
+      movie.getComments()
+      .then(commentMovie => {
+        let movierId = comments.movier_id;
+        db.Movier.findAll()
+        .then(moviers => {
+        // res.send(commentMovie);
+        res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments, moviers: moviers, commentMovie: commentMovie});
+      })
+      })
+      
+    })
+    .catch(err => {
+      console.log(err);
     })
     
   })
@@ -94,6 +104,22 @@ router.get('/movies/:id', (req, res, next) => {
     res.render(err.message);
   })
 });
+
+router.post('/add-comment/:id', (req, res, next) => {
+  let content = req.body.content;
+  let movierId = req.session.userid;
+  let movieId = req.params.id;
+
+  db.Comment.create({
+    'content': content,
+    'movier_id': movierId,
+    'movie_id': movieId,
+  })
+  .then(() => {
+    res.redirect('/')
+  })
+});
+
 
 router.get('/signup', (req, res, next) => {
   res.render('signup', {title: 'Sign Up'});
@@ -137,7 +163,7 @@ router.post('/login', function(req, res, next) {
       if (movier) {
         if (password === movier.password) {
           req.session.username = username
-          req.session.userid = movier.userid
+          req.session.userid = movier.id
           res.redirect('/');
         } else {
           res.send('Password is not match');
