@@ -5,23 +5,25 @@ let helper = require('../helper/helper');
 
 
 // Authentication and Authorization Middleware
-function checkAuth(req, res, next) {
-  if (!req.session.username) {
-    res.send('You are not authorized to view this page');
-  } else {
-    next();
-  }
-}
+// function checkAuth(req, res, next) {
+//   if (!req.session.username) {
+//     // res.send('You are not authorized to view this page');
+//     res.redirect('/login');
+//   } else {
+//     next();
+//   }
+// }
 
 /* GET home page. */
-router.get('/', checkAuth, function(req, res, next) {
+router.get('/', function(req, res, next) {
+  let username = req.session.username;
   db.Movie.findAll({order: '"id" ASC'})
   .then(movies => {
-    res.render('index', { title: 'Movie for Moviers', movies: movies });
+    res.render('index', { title: 'Movie for Moviers', movies: movies, username:username });
   })
 });
 
-router.get('/add-movie', checkAuth, function(req, res, next) {
+router.get('/add-movie', function(req, res, next) {
   res.render('add-movie', {title: 'Add new movie'});
 });
 
@@ -38,7 +40,7 @@ router.post('/add-movie', function(req, res, next) {
   })
 });
 
-router.get('/edit/:id', checkAuth, function(req, res, next) {
+router.get('/edit/:id', function(req, res, next) {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -57,7 +59,7 @@ router.post('/edit/:id', function(req, res, next) {
   })
 });
 
-router.get('/delete/:id', checkAuth, (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -65,7 +67,7 @@ router.get('/delete/:id', checkAuth, (req, res, next) => {
   })
 });
 
-router.get('/delete/confirm/:id', checkAuth, (req, res, next) => {
+router.get('/delete/confirm/:id', (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.destroy({where: {id: movieId}})
   .then(() => {
@@ -76,7 +78,7 @@ router.get('/delete/confirm/:id', checkAuth, (req, res, next) => {
   })
 });
 
-router.get('/movies/:id', checkAuth, (req, res, next) => {
+router.get('/movies/:id', (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -134,7 +136,7 @@ router.post('/login', function(req, res, next) {
       .catch(err => res.send(err.message))
 });
 
-router.get('/logout', checkAuth, function(req, res) {
+router.get('/logout', function(req, res) {
   req.session.destroy(err => {
     if (err) {
       console.log(err);
