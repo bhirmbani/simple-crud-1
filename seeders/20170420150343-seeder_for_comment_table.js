@@ -16,12 +16,14 @@ module.exports = {
     {
       content: 'takut ah serem...',
       movier_id: 2,
+      movie_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       content: 'lucu banget sih..',
       movier_id: 1,
+      movie_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     }
