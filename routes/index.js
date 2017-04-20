@@ -120,20 +120,20 @@ router.post('/login', function(req, res, next) {
   
   // cek password
   db.Movier.findOne({ where: { username: username }})
-      .then(movier => {
-        if (movier) {
-          if (password === movier.password) {
-            req.session.username = username
-            req.session.userid = movier.userid
-            res.redirect('/');
-          } else {
-            res.send('Password is not match');
-          }
+    .then(movier => {
+      if (movier) {
+        if (password === movier.password) {
+          req.session.username = username
+          req.session.userid = movier.userid
+          res.redirect('/');
         } else {
-          res.send('Client not found');
+          res.send('Password is not match');
         }
-      })
-      .catch(err => res.send(err.message))
+      } else {
+        res.send('Client not found');
+      }
+    })
+    .catch(err => res.send(err.message))
 });
 
 router.get('/logout', function(req, res) {
@@ -145,5 +145,14 @@ router.get('/logout', function(req, res) {
     }
   });
 });
+
+router.get('/moviers/:id', function(req, res, next) {
+  let id = req.params.id;
+  db.Movier.findById(id)
+  .then(movier => {
+    res.render('movier-page', {title: `${movier.username} Page`, movier: movier});
+  })
+  
+})
 
 module.exports = router;

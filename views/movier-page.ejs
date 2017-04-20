@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+
+<div class="centers">
+  <h1><%= title %></h1>
+</div>
+
+<div class="centers">
+  <div class="ui card">
+    <div class="content">
+      <a class="header"><%= movier.username %></a>
+      <img class="user-pic" src="<%= movier.image_url %>" alt="">
+      <div class="meta">
+        <span class="date">Member since <%= helper.formatDate(movier.createdAt) %></span>
+      </div>
+      <div class="description">
+        <p>Firstname: <%= movier.first_name %></p>
+        <p>Firstname: <%= movier.last_name %></p>
+        <p>Firstname: <%= movier.email %></p>
+      </div>
+
+    </div>
+    <div class="extra content">
+     <!--  <a>
+        <i class="user icon center"></i>
+        22 Friends
+      </a> -->
+    </div>
+    <a class="center" href="/">Back to Home</a>
+  </div>
+
+</div>
+
+<% include ./partials/footer %>
