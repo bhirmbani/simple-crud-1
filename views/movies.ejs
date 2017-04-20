@@ -31,7 +31,11 @@
   <h3 class="ui dividing header">Comments</h3>
   <div class="comment">
     <a class="avatar">
-      <img src="/images/avatar/small/matt.jpg" draggable="true" data-bukket-ext-bukket-draggable="true">
+      <% comments.forEach(comment => { %>
+      <% if(comment.movier_id === comment.Movier.id) { %>
+      <img src="<%= comment.Movier.image_url %>" draggable="true" data-bukket-ext-bukket-draggable="true">
+      <% } %>
+      <% }) %>
     </a>
     <div class="content">
       <a class="author">Matt</a>
