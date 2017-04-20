@@ -99,8 +99,15 @@ router.post('/signup', (req, res, next) => {
   let email = req.body.email;
   let username = req.body.username;
   let password = req.body.password;
+  let image_url = req.body.image_url;
 
-  db.Movier.create({'first_name': firstname, 'last_name': lastname, 'email': email, 'username': username, 'password': password})
+  db.Movier.create({
+    'first_name': firstname,
+    'last_name': lastname,
+    'email': email,
+    'username': username,
+    'password': password,
+    'image_url': image_url})
   .then(() => {
     res.redirect('/login');
   })
