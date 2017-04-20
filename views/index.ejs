@@ -4,8 +4,8 @@
       <div class="header item">Movie for Moviers</div>
       <a href="/add-movie" class="item">Add movie</a>
       <a href="/moviers" class="item">Moviers</a>
-     <!--  <a href="/signup" class="item">Sign Up</a>
-      <a href="/logout" class="item">Logout</a> -->
+      <a href="/signup" class="item">Sign Up</a>
+      <!-- <a href="/logout" class="item">Logout</a> -->
       <a href="#" class="item ui active red">Welcome <%= username %></a>
     </div>
 
@@ -30,7 +30,7 @@
           <td><div class="ui star rating" data-rating="<%= movie.rating %>"></div></td>
 
           <td>
-            <span class="user-info">posted by <a href="/">tes</a></span>
+            <span class="user-info">posted by <a href="/"><%= movie.Movier.username %></a></span>
           </td>
           <td>
             <a href="/edit/<%= movie.id %>"><i class="edit icon"></i></a>

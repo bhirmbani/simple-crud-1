@@ -5,21 +5,21 @@ let helper = require('../helper/helper');
 
 
 // Authentication and Authorization Middleware
-// function checkAuth(req, res, next) {
-//   if (!req.session.username) {
-//     // res.send('You are not authorized to view this page');
-//     res.redirect('/login');
-//   } else {
-//     next();
-//   }
-// }
+function checkAuth(req, res, next) {
+  if (!req.session.username) {
+    // res.send('You are not authorized to view this page');
+    res.redirect('/login');
+  } else {
+    next();
+  }
+}
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', checkAuth, function(req, res, next) {
   let username = req.session.username;
-  db.Movie.findAll({order: '"id" ASC'})
+  db.Movie.findAll({include:[{model: db.Movier}], order: '"id" ASC'})
   .then(movies => {
-    res.render('index', { title: 'Movie for Moviers', movies: movies, username:username });
+    res.render('index', { title: 'Forum Pecinta Film', movies: movies });
   })
 });
 
@@ -102,7 +102,7 @@ router.post('/signup', (req, res, next) => {
 
   db.Movier.create({'first_name': firstname, 'last_name': lastname, 'email': email, 'username': username, 'password': password})
   .then(() => {
-    res.redirect('/');
+    res.redirect('/login');
   })
   .catch(err => {
     console.log(err.message);
@@ -118,7 +118,7 @@ router.post('/login', function(req, res, next) {
   let username = req.body.username;
   let password = req.body.password;
   
-  //cek password
+  // cek password
   db.Movier.findOne({ where: { username: username }})
       .then(movier => {
         if (movier) {
