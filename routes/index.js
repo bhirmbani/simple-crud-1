@@ -83,7 +83,7 @@ router.get('/movies/:id', (req, res, next) => {
   db.Movie.findById(movieId)
   .then(movie => {
     let movierId = movie.movier_id
-    db.Comment.findAll({include:[{model: db.Movier}], order: '"createdAt" ASC'})
+    db.Comment.findAll({include:[{model: db.Movier}, {model:db.Movie}], order: '"createdAt" ASC'})
     .then(comments => {
       // res.send(comments);
       res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments});
