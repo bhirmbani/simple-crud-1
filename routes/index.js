@@ -21,7 +21,7 @@ router.get('/', checkAuth, function(req, res, next) {
   })
 });
 
-router.get('/add-movie', function(req, res, next) {
+router.get('/add-movie', checkAuth, function(req, res, next) {
   res.render('add-movie', {title: 'Add new movie'});
 });
 
@@ -38,7 +38,7 @@ router.post('/add-movie', function(req, res, next) {
   })
 });
 
-router.get('/edit/:id', function(req, res, next) {
+router.get('/edit/:id', checkAuth, function(req, res, next) {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -57,7 +57,7 @@ router.post('/edit/:id', function(req, res, next) {
   })
 });
 
-router.get('/delete/:id', (req, res, next) => {
+router.get('/delete/:id', checkAuth, (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -65,7 +65,7 @@ router.get('/delete/:id', (req, res, next) => {
   })
 });
 
-router.get('/delete/confirm/:id', (req, res, next) => {
+router.get('/delete/confirm/:id', checkAuth, (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.destroy({where: {id: movieId}})
   .then(() => {
@@ -76,7 +76,7 @@ router.get('/delete/confirm/:id', (req, res, next) => {
   })
 });
 
-router.get('/movies/:id', (req, res, next) => {
+router.get('/movies/:id', checkAuth, (req, res, next) => {
   let movieId = req.params.id;
   db.Movie.findById(movieId)
   .then(movie => {
@@ -123,19 +123,18 @@ router.post('/login', function(req, res, next) {
           if (password === movier.password) {
             req.session.username = username
             req.session.userid = movier.userid
-            console.log(req.session.username)
-            res.redirect('/')
+            res.redirect('/');
           } else {
-            res.send('Password is not match')
+            res.send('Password is not match');
           }
         } else {
-          res.send('Client not found')
+          res.send('Client not found');
         }
       })
       .catch(err => res.send(err.message))
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', checkAuth, function(req, res) {
   req.session.destroy(err => {
     if (err) {
       console.log(err);
