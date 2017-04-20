@@ -5,12 +5,13 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     rating: DataTypes.INTEGER,
     movier_id: DataTypes.INTEGER,
-    image_url: DataTypes.STRING
+    image_url: DataTypes.STRING,
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
         Movie.belongsTo(models.Movier,{foreignKey: 'movier_id'});
+        Movie.hasMany(models.Comment,{foreignKey: 'movie_id'});
       }
     }
   });
