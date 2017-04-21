@@ -1,0 +1,26 @@
+<% include ./partials/header %>
+
+<h1><%= title %></h1>
+
+<table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Movie Title</th>
+          <th>Description</th>
+          <th>Price Per Day</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rents.forEach(rent => { %>
+        <tr>
+          <td><%= rent.title %> </td>
+          <td><%= rent.description %></td>
+          <td><%= rent.price %></td>
+        </tr>
+        
+        <% }) %>
+      </tbody>
+    </table>
+
+
+<% include ./partials/footer %>

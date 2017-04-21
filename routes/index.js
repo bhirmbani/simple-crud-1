@@ -236,4 +236,11 @@ router.post('/add/:id', (req, res, next) => {
   })
 });
 
+router.get('/rent', (req, res, next) => {
+  db.Rent.findAll({order: '"createdAt" DESC'})
+  .then(rents => {
+    res.render('rent', {title: `Daftar Film yang Disewa`, rents: rents});
+  })
+});
+
 module.exports = router;
