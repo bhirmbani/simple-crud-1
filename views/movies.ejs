@@ -30,7 +30,8 @@
       <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
   <% comments.forEach(comment => { %>
-  <% if(comment.movier_id === movie.movier_id) { %>
+  <% if(comment.length < 0) { %>
+  <% if(comment.movier_id === commentMovie[0].movier_id) { %>
   <div class="comment">
     <a class="avatar">
       <img src="<%= moviers[comment.movier_id - 1].image_url %>" draggable="true" data-bukket-ext-bukket-draggable="true">
@@ -49,6 +50,27 @@
       </div>
     </div>
   </div>
+
+    <% } else { %>
+      <div class="comment">
+    <a class="avatar">
+      <img src="" draggable="true" data-bukket-ext-bukket-draggable="true">
+      
+    </a>
+    <div class="content">
+      <a class="author">Tidak ada komen</a>
+      <div class="metadata">
+        <span class="date">0</span>
+      </div>
+      <div class="text">
+        Tidak ada comment
+      </div>
+      <div class="actions">
+        
+      </div>
+    </div>
+  </div>
+  <% }%>
   <% } %>
   <% }) %>
   <form action="/add-comment/<%= movie.id %>" method="POST" class="ui reply form">

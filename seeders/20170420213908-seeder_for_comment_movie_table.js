@@ -16,12 +16,14 @@ module.exports = {
     {
       comment_id: 2,
       movie_id: 1,
+      movier_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       comment_id: 1,
       movie_id: 2,
+      movier_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     }
