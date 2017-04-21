@@ -31,6 +31,46 @@ module.exports = {
       password: '11111',
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      first_name: 'John',
+      last_name: 'Cena',
+      email: 'johncena@gmail.com',
+      username: 'johncena',
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/john-cena.jpg',
+      password: '11111',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      first_name: 'John',
+      last_name: 'Cena',
+      email: 'johncena@gmail.com',
+      username: 'johncena',
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/john-cena.jpg',
+      password: '11111',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      first_name: 'John',
+      last_name: 'Cena',
+      email: 'johncena@gmail.com',
+      username: 'johncena',
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/john-cena.jpg',
+      password: '11111',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      first_name: 'John',
+      last_name: 'Cena',
+      email: 'johncena@gmail.com',
+      username: 'johncena',
+      image_url: 'https://www.imageupload.co.uk/images/2017/04/20/john-cena.jpg',
+      password: '11111',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
     ], {});
   },

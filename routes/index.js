@@ -81,37 +81,41 @@ router.get('/delete/confirm/:id', (req, res, next) => {
 router.get('/movies/:id', (req, res, next) => {
   let movieId = req.params.id;
   let movierId = req.session.userid;
-  db.Comment.findAll({where: {movie_id: movieId}})
-  .then(comments => {
-    db.Movie.findById(movieId)
-    .then(movie => {
-      res.render('movies', {title: movie.title, comments:comments, movie: movie, movieId: movieId})
-    })
-    
-  })
-  // db.Movie.findById(movieId)
-  // .then(movie => {
-  //   db.Comment.findAll()
-  //   .then(comments => {
-  //     movie.getComments()
-  //     .then(commentMovie => {
-  //       let movierId = comments.movier_id;
-  //       db.Movier.findAll()
-  //       .then(moviers => {
-  //       res.send(commentMovie);
-  //       // res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments, moviers: moviers, commentMovie: commentMovie});
-  //     })
+  // db.Comment.findAll({where: {movie_id: movieId}})
+  // .then(comments => {
+  //   db.Movie.findById(movieId)
+  //   .then(movie => {
+  //     db.Moviers.findAll()
+  //     .then(moviers => {
+  //       res.render('movies', {title: movie.title, comments:comments, movie: movie, movieId: movieId, moviers: moviers, movierId: movierId})
   //     })
       
   //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
     
   // })
-  // .catch((err) => {
-  //   res.render(err.message);
-  // })
+  db.Movie.findById(movieId)
+  .then(movie => {
+    db.Comment.findAll()
+    .then(comments => {
+      movie.getComments()
+      .then(commentMovie => {
+        let movierId = comments.movier_id;
+        db.Movier.findAll()
+        .then(moviers => {
+        // res.send(commentMovie);
+        res.render('movies', {title: movie.title, movie: movie, helper: helper, comments: comments, moviers: moviers, commentMovie: commentMovie});
+      })
+      })
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    
+  })
+  .catch((err) => {
+    res.render(err.message);
+  })
 });
 
 router.post('/add-comment/:id', (req, res, next) => {
@@ -199,9 +203,37 @@ router.get('/moviers/:id', function(req, res, next) {
   let id = req.params.id;
   db.Movier.findById(id)
   .then(movier => {
-    res.render('movier-page', {title: `${movier.username} Page`, movier: movier});
+    db.Movie.findAll()
+    .then(movies => {
+      // res.send(movies)
+      res.render('movier-page', {title: `${movier.username} Page`, movier: movier, movies: movies});
+    })
+    
   })
   
 })
+
+router.get('/add/:id', (req, res, next) => {
+  let movieId = req.params.id;
+  db.Movie.findById(movieId)
+  .then(rent => {
+    res.render('add', {title: `Rent Movie Page`, rent: rent});  
+  })
+})
+
+router.post('/add/:id', (req, res, next) => {
+  let id = req.params.id;
+  let title = req.body.title;
+  let description = req.body.description;
+  let price = req.body.price;
+  db.Rent.create({
+    'title': title,
+    'description': description,
+    'price': price,
+  })
+  .then(() => {
+    res.redirect('/');
+  })
+});
 
 module.exports = router;

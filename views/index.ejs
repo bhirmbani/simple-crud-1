@@ -38,8 +38,9 @@
             <% if(movie.Movier.username === username) { %> 
             <a href="/edit/<%= movie.id %>"><i class="edit icon"></i></a>
             <a href="/delete/<%= movie.id %>"><i class="erase icon"></i></a>
+            <a href="/add/<%= movie.id %>"><i class="add to cart icon"></i></a>
             <% } else {%>
-
+            <a href="/add/<%= movie.id %>"><i class="add to cart icon"></i></a>
             <% }%>
           </td>
 

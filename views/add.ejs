@@ -1,0 +1,41 @@
+<% include ./partials/header %>
+
+
+<h1><%= title %></h1>
+
+<div class="ui center aligned container text add-movie">
+  <h1> <%= title %></h1>
+  <form class="ui form" action="/add/<%= rent.id %>" method="POST">
+    <div class="field">
+      <label for="title">Movie Title</label>
+      <input value="<%= rent.title %>" type="text" name="title" placeholder="movie title">
+    </div>
+    <div class="field">
+      <label for="description">Movie Description</label>
+      <textarea name="description" rows="2" placeholder="what do you like about this movie?"><%= rent.description %></textarea>
+    </div>
+
+    <div class="field">
+      <label for="price">Harga sewa per hari</label>
+      <textarea name="price" rows="2" placeholder="what do you like about this movie?"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="">Mau sewa film ini?</label>
+    </div>
+
+    <div class="field">
+      <div><button class="ui primary button">Ya</button></div>
+    </div>
+
+    
+  </form>
+</div>
+
+<div class="ui center aligned container">
+    <a href="/">Cancel</a>
+  </div>
+
+
+
+<% include ./partials/footer %>
