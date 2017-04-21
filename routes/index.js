@@ -19,7 +19,7 @@ router.get('/', checkAuth, function(req, res, next) {
   let username = req.session.username;
   db.Movie.findAll({include:[{model: db.Movier}], order: '"id" ASC'})
   .then(movies => {
-    res.render('index', { title: 'Forum Pecinta Film', movies: movies });
+    res.render('index', { title: 'MovieRent', movies: movies });
   })
 });
 
